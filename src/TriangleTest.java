@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayInputStream;
 import java.util.InputMismatchException;
@@ -6,6 +6,23 @@ import java.util.InputMismatchException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TriangleTest {
+    private ByteArrayInputStream inputStream;
+
+    @BeforeEach
+    public void setUp() {
+                inputStream = null;
+    }
+
+    @AfterEach
+    public void tearDown() {
+                if (inputStream != null) {
+            try {
+                inputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Test
     public void testIsInvalidInput_InvalidInput() {
@@ -20,7 +37,7 @@ public class TriangleTest {
         assertTrue(Triangle.isInvalidInput(1, 1, 1000000001));
     }
 
-        @Test
+    @Test
     public void testIsInvalidInput_ValidInput() {
         assertFalse(Triangle.isInvalidInput(3, 4, 5));
         assertFalse(Triangle.isInvalidInput(65, 72, 97));
@@ -30,12 +47,11 @@ public class TriangleTest {
     @Test
     public void testInputMismatchException() {
         String input = "3\n4\nx\n";
-        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
 
         assertThrows(InputMismatchException.class, () -> Triangle.main(new String[]{}));
     }
-
 
     @Test
     public void testIsTriangle_NotATriangle() {
@@ -49,7 +65,6 @@ public class TriangleTest {
         assertTrue(Triangle.isEquilateral(1, 1, 1));
         assertTrue(Triangle.isEquilateral(1000000000, 1000000000, 1000000000));
     }
-
 
     @Test
     public void testIsEquilateral_NotEquilateral() {
@@ -68,9 +83,6 @@ public class TriangleTest {
         assertTrue(Triangle.isIsosceles(8, 11, 8));
         assertTrue(Triangle.isIsosceles(11, 8, 8));
     }
-
-
-
 
     @Test
     public void testClassifyTriangle_EquilateralTriangle() {
