@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5abb5b3d-9342-4fb9-b2ab-fac94c11cf4b" name="Changes" comment="16.12_updated">
+    <list default="true" id="5abb5b3d-9342-4fb9-b2ab-fac94c11cf4b" name="Changes" comment="17.12_with parameters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TriangleTest.java" afterDir="false" />
     </list>
@@ -130,7 +130,7 @@
       <workItem from="1701611773593" duration="7000" />
       <workItem from="1701633237520" duration="47000" />
       <workItem from="1702755055653" duration="2274000" />
-      <workItem from="1702799462927" duration="1484000" />
+      <workItem from="1702799462927" duration="2135000" />
     </task>
     <task id="LOCAL-00001" summary="03.12">
       <created>1701597061967</created>
@@ -202,7 +202,28 @@
       <option name="project" value="LOCAL" />
       <updated>1702756138745</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="16.12_updated">
+      <created>1702801201593</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1702801201593</updated>
+    </task>
+    <task id="LOCAL-00012" summary="17.12_with parameters">
+      <created>1702801485085</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1702801485085</updated>
+    </task>
+    <task id="LOCAL-00013" summary="17.12_with parameters">
+      <created>1702801586734</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1702801586734</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,7 +245,8 @@
     <MESSAGE value="03.12" />
     <MESSAGE value="16.12" />
     <MESSAGE value="16.12_updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="16.12_updated" />
+    <MESSAGE value="17.12_with parameters" />
+    <option name="LAST_COMMIT_MESSAGE" value="17.12_with parameters" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
