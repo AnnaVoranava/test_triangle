@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5abb5b3d-9342-4fb9-b2ab-fac94c11cf4b" name="Changes" comment="16.12">
+    <list default="true" id="5abb5b3d-9342-4fb9-b2ab-fac94c11cf4b" name="Changes" comment="16.12_updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TriangleTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +129,8 @@
       <workItem from="1701593832243" duration="2537000" />
       <workItem from="1701611773593" duration="7000" />
       <workItem from="1701633237520" duration="47000" />
-      <workItem from="1702755055653" duration="769000" />
+      <workItem from="1702755055653" duration="2274000" />
+      <workItem from="1702799462927" duration="1484000" />
     </task>
     <task id="LOCAL-00001" summary="03.12">
       <created>1701597061967</created>
@@ -186,7 +188,21 @@
       <option name="project" value="LOCAL" />
       <updated>1702755095546</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="16.12_updated">
+      <created>1702756073730</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1702756073730</updated>
+    </task>
+    <task id="LOCAL-00010" summary="16.12_updated">
+      <created>1702756138745</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1702756138745</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +223,18 @@
     <MESSAGE value="03.12_2" />
     <MESSAGE value="03.12" />
     <MESSAGE value="16.12" />
-    <option name="LAST_COMMIT_MESSAGE" value="16.12" />
+    <MESSAGE value="16.12_updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="16.12_updated" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk-18.0.2.1/lib/src.zip!/java.base/java/util/ArrayList.java</url>
+          <line>1511</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

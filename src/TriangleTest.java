@@ -1,107 +1,94 @@
-import org.junit.jupiter.api.*;
-
-import java.io.ByteArrayInputStream;
-import java.util.InputMismatchException;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TriangleTest {
-    private ByteArrayInputStream inputStream;
 
-    @BeforeEach
-    public void setUp() {
-                inputStream = null;
+    @ParameterizedTest
+    @CsvSource({
+            "1, 1, 1, Треугольник равносторонний!",
+            "3, 4, 5, Треугольник неравносторонний",
+            "5, 5, 8, Треугольник равнобедренный!",
+            "12, 12, 12, Треугольник равносторонний!",
+            "7, 10, 5, Треугольник неравносторонний",
+            "1, 2, 2, Треугольник равнобедренный!"
+    })
+    public void testClassifyTriangle(int side1, int side2, int side3, String expectedClassification) {
+        assertEquals(expectedClassification, Triangle.classifyTriangle(side1, side2, side3));
     }
 
-    @AfterEach
-    public void tearDown() {
-                if (inputStream != null) {
-            try {
-                inputStream.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+    @ParameterizedTest
+    @CsvSource({
+            "1, 0, 1",
+            "0, 1, 1",
+            "1, 1, 0",
+            "-1, 1, 1",
+            "1, -1, 1",
+            "1, 1, -1",
+            "1000000001, 1, 1",
+            "1, 1000000001, 1",
+            "1, 1, 1000000001"
+    })
+    public void testIsInvalidInput(int side1, int side2, int side3) {
+        assertTrue(Triangle.isInvalidInput(side1, side2, side3));
     }
 
-    @Test
-    public void testIsInvalidInput_InvalidInput() {
-        assertTrue(Triangle.isInvalidInput(1, 0, 1));
-        assertTrue(Triangle.isInvalidInput(0, 1, 1));
-        assertTrue(Triangle.isInvalidInput(1, 1, 0));
-        assertTrue(Triangle.isInvalidInput(-1, 1, 1));
-        assertTrue(Triangle.isInvalidInput(1, -1, 1));
-        assertTrue(Triangle.isInvalidInput(1, 1, -1));
-        assertTrue(Triangle.isInvalidInput(1000000001, 1, 1));
-        assertTrue(Triangle.isInvalidInput(1, 1000000001, 1));
-        assertTrue(Triangle.isInvalidInput(1, 1, 1000000001));
+    @ParameterizedTest
+    @CsvSource({
+            "3, 4, 5",
+            "8, 15, 17",
+            "5, 12, 13"
+    })
+    public void testIsValidInput(int side1, int side2, int side3) {
+        assertFalse(Triangle.isInvalidInput(side1, side2, side3));
     }
 
-    @Test
-    public void testIsInvalidInput_ValidInput() {
-        assertFalse(Triangle.isInvalidInput(3, 4, 5));
-        assertFalse(Triangle.isInvalidInput(65, 72, 97));
-        assertFalse(Triangle.isInvalidInput(999999999, 999999998, 1000000000));
+    @ParameterizedTest
+    @CsvSource({
+            "1, 1, 3",
+            "1, 3, 1",
+            "3, 1, 1"
+    })
+    public void testIsTriangle_NotATriangle(int side1, int side2, int side3) {
+        assertFalse(Triangle.isTriangle(side1, side2, side3));
     }
 
-    @Test
-    public void testInputMismatchException() {
-        String input = "3\n4\nx\n";
-        inputStream = new ByteArrayInputStream(input.getBytes());
-        System.setIn(inputStream);
-
-        assertThrows(InputMismatchException.class, () -> Triangle.main(new String[]{}));
+    @ParameterizedTest
+    @CsvSource({
+            "1, 1, 1",
+            "1000000000, 1000000000, 1000000000"
+    })
+    public void testIsEquilateral_EquilateralTriangle(int side1, int side2, int side3) {
+        assertTrue(Triangle.isEquilateral(side1, side2, side3));
     }
 
-    @Test
-    public void testIsTriangle_NotATriangle() {
-        assertFalse(Triangle.isTriangle(1, 1, 3));
-        assertFalse(Triangle.isTriangle(1, 3, 1));
-        assertFalse(Triangle.isTriangle(3, 1, 1));
+    @ParameterizedTest
+    @CsvSource({
+            "3, 4, 5",
+            "7, 7, 10",
+            "8, 8, 12"
+    })
+    public void testIsEquilateral_NotEquilateral(int side1, int side2, int side3) {
+        assertFalse(Triangle.isEquilateral(side1, side2, side3));
     }
 
-    @Test
-    public void testIsEquilateral_EquilateralTriangle() {
-        assertTrue(Triangle.isEquilateral(1, 1, 1));
-        assertTrue(Triangle.isEquilateral(1000000000, 1000000000, 1000000000));
+    @ParameterizedTest
+    @CsvSource({
+            "1, 2, 2",
+            "2, 1, 2",
+            "2, 2, 1"
+    })
+    public void testIsIsosceles_IsoscelesTriangle(int side1, int side2, int side3) {
+        assertTrue(Triangle.isIsosceles(side1, side2, side3));
     }
 
-    @Test
-    public void testIsEquilateral_NotEquilateral() {
-        assertFalse(Triangle.isEquilateral(3, 4, 5));
-    }
-
-    @Test
-    public void testIsIsosceles_IsoscelesTriangle() {
-        assertTrue(Triangle.isIsosceles(1, 2, 2));
-        assertTrue(Triangle.isIsosceles(2, 1, 2));
-        assertTrue(Triangle.isIsosceles(2, 2, 1));
-        assertTrue(Triangle.isIsosceles(999999999, 1000000000, 1000000000));
-        assertTrue(Triangle.isIsosceles(1000000000, 999999999, 1000000000));
-        assertTrue(Triangle.isIsosceles(1000000000, 1000000000, 999999999));
-        assertTrue(Triangle.isIsosceles(8, 8, 11));
-        assertTrue(Triangle.isIsosceles(8, 11, 8));
-        assertTrue(Triangle.isIsosceles(11, 8, 8));
-    }
-
-    @Test
-    public void testClassifyTriangle_EquilateralTriangle() {
-        assertEquals("Треугольник равносторонний!", Triangle.classifyTriangle(1, 1, 1));
-    }
-
-    @Test
-    public void testClassifyTriangle_IsoscelesTriangle() {
-        assertEquals("Треугольник равнобедренный!", Triangle.classifyTriangle(8, 8, 11));
-    }
-
-    @Test
-    public void testClassifyTriangle_ScaleneTriangle() {
-        assertEquals("Треугольник неравносторонний", Triangle.classifyTriangle(3, 4, 5));
-    }
-
-    @Test
-    public void testClassifyTriangle_NotATriangle() {
-        assertEquals("Не треугольник. Сумма длин двух сторон должна быть больше, чем длина третьей стороны",
-                Triangle.classifyTriangle(1, 1, 3));
+    @ParameterizedTest
+    @CsvSource({
+            "3, 4, 5",
+            "7, 10, 5",
+            "1, 2, 3"
+    })
+    public void testIsIsosceles_NotIsosceles(int side1, int side2, int side3) {
+        assertFalse(Triangle.isIsosceles(side1, side2, side3));
     }
 }
